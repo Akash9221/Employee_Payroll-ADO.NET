@@ -93,7 +93,35 @@ namespace EmployeePayrollProblems
             }
         }
 
-
+        public void UpdateDataInDatabase(EmployeePayroll employeepayroll)
+        {
+            SqlConnection sqlconnection = new SqlConnection(connectionString);
+            try
+            {
+                using (sqlconnection)
+                {
+                    sqlconnection.Open();
+                    SqlCommand command = new SqlCommand("SPUpdateDataInDB", sqlconnection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@Name", employeepayroll.Name);
+                    command.Parameters.AddWithValue("@Address", employeepayroll.Address);
+                    command.Parameters.AddWithValue("@Phone_No", employeepayroll.PhoneNumber);
+                    int result = command.ExecuteNonQuery();
+                    sqlconnection.Close();
+                    if (result >= 1)
+                    {
+                        Console.WriteLine("Employee Updated Successfully");
+                    }
+                    else
+                        Console.WriteLine("No DataBase found");
+                }
+            }
+            catch (Exception ex)
+            {
+                // handle exception here
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
 }
 

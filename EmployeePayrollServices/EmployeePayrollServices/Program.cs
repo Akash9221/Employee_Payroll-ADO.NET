@@ -29,6 +29,15 @@ namespace EmployeePayrollProblems
                     case 2:
                         employeePayrollServices.RetrieveEntriesFromEmployeePayDB();
                         break;
+                    case 3:
+                        EmployeePayroll employeePayroll = new EmployeePayroll
+                        {
+                            Name = "Akash",
+                            Address = "Mumbai",
+                            PhoneNumber = "7249624543",
+                        };
+                        employeePayrollServices.UpdateDataInDatabase(employeePayroll);
+                        break;
 
                     default:
                         flag = false;
