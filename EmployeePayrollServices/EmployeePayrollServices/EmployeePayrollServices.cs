@@ -122,6 +122,37 @@ namespace EmployeePayrollProblems
                 Console.WriteLine(ex.Message);
             }
         }
+
+        public void DeleteDataFromDatabase(string name)
+        {
+            SqlConnection sqlconnection = new SqlConnection(connectionString);
+            try
+            {
+                using (sqlconnection)
+                {
+                    sqlconnection.Open();
+                    SqlCommand command = new SqlCommand("SPDeleteDataFromDB", sqlconnection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@Name", name);
+
+                    int result = command.ExecuteNonQuery();
+                    sqlconnection.Close();
+                    if (result >= 1)
+                    {
+                        Console.WriteLine("Employee Deleted Successfully");
+                    }
+                    else
+                        Console.WriteLine("No DataBase found");
+                }
+            }
+            catch (Exception ex)
+            {
+                // handle exception here
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+
     }
 }
 

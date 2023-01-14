@@ -38,6 +38,9 @@ namespace EmployeePayrollProblems
                         };
                         employeePayrollServices.UpdateDataInDatabase(employeePayroll);
                         break;
+                    case 4:
+                        employeePayrollServices.DeleteDataFromDatabase("Akash");
+                        break;
 
                     default:
                         flag = false;
