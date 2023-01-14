@@ -26,7 +26,10 @@ namespace EmployeePayrollProblems
                         };
                         employeePayrollServices.AddEmployeeInDB(employee);
                         break;
-                  
+                    case 2:
+                        employeePayrollServices.RetrieveEntriesFromEmployeePayDB();
+                        break;
+
                     default:
                         flag = false;
                         break;
